@@ -1,0 +1,18 @@
+
+<% if user_signed_in? %>
+  <div id="Time">
+    <% @friends.each do |friend| %>
+      <% if friend.user == current_user %>
+        <%= render friend %>
+        <p>
+          <%= link_to "Ver", friend, class: "btn btn-secondary" %>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+
+<h1>Devmaker</h1>
+<p>Estudando Ruby on Rails<p>
+
+<% end %>

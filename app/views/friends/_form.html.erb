@@ -1,0 +1,27 @@
+<%= form_with(model: friend) do |form| %>
+  <% if friend.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(friend.errors.count, "error") %> Nâo foi possível salvar este colaborador.:</h2>
+
+      <ul>
+        <% friend.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <br/>
+    <%= form.text_field :first_name, placeholder: "Nome", style: "display: block" %>
+    <br/>
+    <%= form.text_field :last_name, placeholder: "Sobrenome", style: "display: block" %>
+    <br/>
+    <%= form.text_field :email, placeholder: "e-mail", style: "display: block" %>
+    <br/>
+    <%= form.text_field :phone, placeholder: "Telefone", style: "display: block" %>
+    <br/>
+    <%= form.text_field :linkedin, placeholder: "Posição", style: "display: block" %>
+    <br/>
+    <%= form.number_field :user_id, id: :friend_user_id, value: current_user.id, type: :hidden, style: "display: block" %>
+    <br/>
+    <%= form.submit class: 'btn btn-secondary' %>
+<% end %>
